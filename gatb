@@ -466,7 +466,7 @@ def besst(contigs, bam_files, orientations, output_filename="" ):
     #filter_contigs = (200 if len(mate_pairs) == 0 else 1000) #hacky
     #cmd = ['-c', contigs, '-f'] + bam_files + ['--orientation'] + orientations + ['-filter_contigs', filter_contigs, '-o', prefix + '_besst', '-K', k]
     # let's try with as few parameters as possible
-    cmd = ['-c', contigs, '-f'] + bam_files + ['-o', prefix + '_besst'] + ['-orientation'] + orientations + ['--iter', besst_iter]
+    cmd = ['-c', contigs, '-f'] + bam_files + ['-o', prefix + '_besst'] + ['--orientation'] + orientations + ['--iter', besst_iter]
     execute('BESST/runBESST', cmd, interpreter=interpreter, memused=True)
     besst_scaffolds = sorted(glob.glob(prefix + "_besst/BESST_output/pass*/*.fa"))
     if len(besst_scaffolds) == 0:
